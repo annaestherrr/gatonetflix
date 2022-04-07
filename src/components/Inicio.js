@@ -1,6 +1,7 @@
 //Libs
 import React from "react";
 
+//Image
 import Gato from "../assets/gato.png";
 
 //Styles

@@ -88,27 +88,28 @@ const Footer = styled.div`
   }
 `;
 
-const apiFilmes = axios.create({
+// url base da API que estou consumindo
+const apiMovies = axios.create({
   baseURL:
-    "https://api.themoviedb.org/3/movie/popular?api_key=b77e1d7f827d8de03a2397359f0f7046&language=en-US&page=1",
+    "https://api.themoviedb.org/3/movie/popular?api_key=b77e1d7f827d8de03a2397359f0f7046&language=pt-BR&page=1",
 });
 
 export default class App extends React.Component {
   state = {
     moviesList: [],
-    filmesFiltrados: [],
     filterValue: "",
   };
 
   componentDidMount() {
-    this.getFilmes();
+    this.getMovies();
   }
 
-  getFilmes = async () => {
+  // Função que trás os dados da API
+  getMovies = async () => {
     // método try catch é usado em requisições de api para garantir que caso ocorra algum erro na chamada, não quebre a tela
     try {
-      const response = await apiFilmes.get();
-      const filmes = response.data.results.map((item) => {
+      const response = await apiMovies.get();
+      const movies = response.data.results.map((item) => {
         return {
           id: item.id,
           title: item.title,
@@ -119,7 +120,7 @@ export default class App extends React.Component {
       });
 
       this.setState({
-        moviesList: filmes,
+        moviesList: movies,
       });
     } catch (error) {
       console.log(error);

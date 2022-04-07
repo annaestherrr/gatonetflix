@@ -87,9 +87,10 @@ const Footer = styled.div`
   }
 `;
 
+// url base da API que estou consumindo
 const apiFilmes = axios.create({
   baseURL:
-    "https://api.themoviedb.org/3/tv/popular?api_key=b77e1d7f827d8de03a2397359f0f7046&language=en-US&page=1",
+    "https://api.themoviedb.org/3/tv/popular?api_key=b77e1d7f827d8de03a2397359f0f7046&language=pt-BR&page=1",
 });
 
 export default class App extends React.Component {
@@ -102,6 +103,8 @@ export default class App extends React.Component {
     this.getFilmes();
   }
 
+  
+  // Função que trás os dados da API
   getFilmes = async () => {
     // método try catch é usado em requisições de api para garantir que caso ocorra algum erro na chamada, não quebre a tela
     try {
